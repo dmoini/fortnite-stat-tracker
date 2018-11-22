@@ -1,0 +1,255 @@
+:root {
+    --fortnite-dark-blue: #0a1749;
+    --fortnite-main-blue: #4c6592;
+    --fortnite-light-blue: #92a4cc;
+    --fortnite-yellow: #f5ec00;
+    --fortnite-light-yellow: #fdffc4;
+    --fortnite-dark-yellow: #c6c00f;
+}
+
+.fortnite-font {
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    text-transform: uppercase;
+}
+
+nav {
+    background-color: var(--fortnite-dark-blue);
+    height: 100px;
+}
+
+#nav-header {
+    font-size: 400%;
+    padding-top: 15px;
+}
+
+@media (max-width: 767px) {
+    nav {
+        height: 80px;
+    }
+
+    #nav-header {
+        font-size: 285%;
+        padding-top: 15px;
+    }
+}
+
+@media (max-width: 575px) {
+    nav {
+        height: 60px;
+    }
+
+    #nav-header {
+        font-size: 200%;
+        padding-top: 12.5px;
+    }
+}
+
+#background-img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn {
+    background-color: var(--fortnite-yellow);
+    border-color: var(--fortnite-light-yellow);
+    color: black;
+    font-weight: bold !important;
+}
+
+.btn:hover {
+    background-color: var(--fortnite-dark-yellow);
+}
+
+select {
+    background-color: var(--fortnite-yellow) !important;
+    border-color: var(--fortnite-light-yellow);
+    color: black !important;
+    font-weight: bold;
+}
+
+#choose-platform {
+    max-width: 80px !important;
+}
+
+#choose-challenge {
+    max-width: 180px !important;
+}
+
+#search-name {
+    font-weight: 900;
+}
+
+#username {
+    font-size: 2rem;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+.stats {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+}
+
+@media (min-width: 576px) {
+    #username {
+        font-size: 2.5rem;
+    }
+
+    .stats {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    #username {
+        font-size: 3rem;
+    }
+
+    .stats {
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 992px) {
+    #username {
+        font-size: 3.5rem;
+    }
+
+    .stats {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    #username {
+        font-size: 4rem;
+    }
+
+    .stats {
+        font-size: 2.25rem;
+    }
+}
+
+#shop-challenges {
+    background-color: var(--fortnite-main-blue);
+}
+
+.thumbnail {
+    height: 150px;
+    width: 150px;
+}
+
+/* CSS TAKEN FROM https://fortniteapi.com */
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+.card-img {
+    width: 100%;
+    border-radius: calc(.25rem - 1px);
+}
+
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1.25rem;
+}
+
+#itemdesc {
+    background: rgba(0, 0, 0, .3);
+    position: absolute;
+    width: 94.5%;
+    bottom: 0;
+    padding: 5px;
+    margin-left: -16px;
+    margin-bottom: 4px;
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.card-title {
+    margin-bottom: .75rem;
+}
+
+.itemname {
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    transform: scale(1, 1.3);
+    -webkit-transform: scale(1, 1.3);
+    -moz-transform: scale(1, 1.3);
+    -ms-transform: scale(1, 1.3);
+    -o-transform: scale(1, 1.3);
+    margin-top: 5px;
+}
+
+.card-text:last-child {
+    margin-bottom: 0;
+}
+
+.card-text img {
+    width: 20px;
+}
+
+.itemprice {
+    text-transform: uppercase;
+    font-size: 13px;
+    text-align: center;
+    margin-top: -12px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+.challenge {
+    min-height: 50px;
+    width: 100%;
+    background-color: var(--fortnite-light-blue);
+    padding: 10px;
+    margin-top: 2px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    border: 2px solid var(--fortnite-dark-blue);
+    border-radius: 0.5rem;
+}
+
+/* END OF CSS TAKEN FROM https://fortniteapi.com/store */
+
+#challenges span {
+    font-size: 20px;
+}
+
+#challenges img {
+    width: 20px;
+}
+
+.challenge span:first-child {
+    font-weight: 600 !important;
+}
+
+.challenge span {
+    font-weight: 400 !important;
+}
+
+footer {
+    background-color: var(--fortnite-dark-blue);
+}
