@@ -29,9 +29,8 @@
       window.ApiService.searchUserID({'username': username})
         .then(result => getStats(result.uid, platform, season))
         .catch(() => $('#username-container').empty().append(
-          $('<div></div>')
-            .addClass('col alert alert-danger text-center')
-            .text('This user does not exist or is not available.')
+          displayAlert(defaultAlertClasses, 
+            'This user does not exist or is not available.')
         ))
     }
 
@@ -39,10 +38,9 @@
       window.ApiService.searchStats({'user_id': uid, 'platform': platform, 'window': season})
         .then(result => displayUsernameAndStats(result))
         .catch(() => $('#username-container').empty().append(
-          $('<div></div>')
-            .addClass('col-md-6 offset-md-3 col-sm-8 offset-sm-2 alert alert-danger text-center')
-            .text('Could not find this user. Please make sure you entered ' +
-                  'the correct Epic Games username and chose the correct platform.')
+          displayAlert('col-md-6 offset-md-3 col-sm-8 offset-sm-2 alert alert-danger text-center',
+            'Could not find this user. Please make sure you entered the correct Epic Games username ' + 
+            'and chose the correct platform.')
         ))
     }
 
@@ -60,11 +58,15 @@
       window.ApiService.searchChallenges({'season': season})
         .then(result => filterChallenges(result.challenges, chosenWeek, result.star))
         .catch(() => $('#challenge-container').empty().append(
-          $('<div></div>')
-            .addClass('col alert alert-danger text-center')
-            .text('Sorry, but could not display challenges.')
+          displayAlert(defaultAlertClasses, 
+            'Sorry, but could not display challenges.')
         ))
     })
+  }
+
+  const defaultAlertClasses = 'col alert alert-danger text-center'
+  const displayAlert = (classes, alertMessage) => {
+    return $('<div></div>').addClass(classes).text(alertMessage)
   }
 
   // USERNAME AND STATS
@@ -112,9 +114,8 @@
     window.ApiService.searchShop()
       .then(result => displayShopItems(result.items, result.vbucks))
       .catch(() => $('#shop-container').empty().append(
-        $('<div></div>')
-          .addClass('col alert alert-danger text-center')
-          .text('Sorry, but could not display the shop.')
+        displayAlert(defaultAlertClasses,
+          'Sorry, but could not display the shop.')
       ))
   }
 
@@ -148,12 +149,14 @@
   // CHALLENGES
   const displayChallenges = () => {
     window.ApiService.searchChallenges({'season': 'current'})
-      .then(result => loadChallengesAndSelect(result.challenges, result.season, result.currentweek, result.star))
-      .catch(() => $('#challenge-container').empty().append(
-        $('<div></div>')
-          .addClass('col alert alert-danger text-center')
-          .text('Sorry, but could not display challenges.')
-      ))
+      .then(result => {
+        loadChallengesAndSelect(result.challenges, result.season, result.currentweek, result.star)
+      }).catch(() => {
+        $('#challenge-container').empty().append(
+          displayAlert(defaultAlertClasses, 
+            'Sorry, but could not display challenges.')
+        )
+      })
   }
 
   const loadChallengesAndSelect = (challenges, season, currentWeek, star) => {
@@ -192,30 +195,40 @@
     }).text('──────────')
   )
 
+  const cleanChallenges = (challenges) => {
+    for (let week in challenges) {
+      if (challenges[week].length === 0) {
+        delete challenges[week]
+      }
+    }
+    return challenges
+  }
+
   const filterChallenges = (challenges, currentWeek, star) => {
-    const availableChallenges = challenges.filter(week => {
-      return week.entries !== undefined
-    })
-    displayChallengeItems(availableChallenges[currentWeek - 1], star)
+    const availableChallenges = cleanChallenges(challenges)
+    const cws = "week" + currentWeek
+    displayChallengeItems(availableChallenges[cws], star)
   }
 
   const displayChallengeItems = (week, star) => {
     $('#challenge-container').empty().append(
-      week.entries.map(
-        entry => { return challengeElement(entry, star) }
-      )
+      Object.entries(week).map(entry => { 
+        return challengeElement(entry[1], star) 
+      })
     )
   }
 
-  const challengeElement = (entry, star) => $('<div></div>').addClass('challenge my-2').append(
-    $('<span></span>').text(entry.challenge)
-  ).append($('<br>')).append(
-    $('<span></span>').text(`0 / ${entry.total} - ${entry.stars}`)
-  ).append(
-    $('<img/>').attr({
-      src: star
-    }).addClass('mb-1 ml-2')
-  )
+  const challengeElement = (entry, star) => {
+    return $('<div></div>').addClass('challenge my-2').append(
+      $('<span></span>').text(entry.challenge)
+    ).append($('<br>')).append(
+      $('<span></span>').text(`0 / ${entry.total} - ${entry.stars}`)
+    ).append(
+      $('<img/>').attr({
+        src: star
+      }).addClass('mb-1 ml-2')
+    )
+  }
 
   const init = () => {
     window.ApiService.apiHost('https://fortnite-public-api.theapinetwork.com/prod09/')
