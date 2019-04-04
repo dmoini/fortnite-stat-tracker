@@ -11,19 +11,19 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "latest",
+    "eslint": "^5.16.0",
     "jasmine-core": "latest",
-    "karma": "latest",
+    "karma": "^4.0.1",
     "karma-chrome-launcher": "latest",
     "karma-coverage": "latest",
     "karma-firefox-launcher": "latest",
     "karma-fixture": "latest",
     "karma-html2js-preprocessor": "latest",
-    "karma-jasmine": "latest",
+    "karma-jasmine": "^2.0.1",
     "karma-jquery": "latest",
     "karma-sinon": "latest",
-    "sinon": "latest",
-    "superstatic": "latest"
+    "sinon": "^7.3.1",
+    "superstatic": "^6.0.4"
   },
   "eslintConfig": {
     "env": {
@@ -95,5 +95,8 @@
         "never"
       ]
     }
+  },
+  "dependencies": {
+    "just-extend": "^4.0.2"
   }
 }
