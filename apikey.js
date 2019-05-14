@@ -1,4 +1,4 @@
-const API_KEY = '1f4f9b4d95fe1cab889328527c32d775'
+const API_KEY = 'a3d35ee8226c3cc4c86a871cceb6e3fd'
 
 window.ApiKey = {
   API_KEY
