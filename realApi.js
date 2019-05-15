@@ -3,7 +3,6 @@
 // to be aware of this older mechanism.
 (() => {
   let api = 'https://fortnite-public-api.theapinetwork.com/prod09/'
-  const API_KEY = window.ApiKey.API_KEY
 
   const apiHost = host => { api = host }
   const urlFor = resource => `${api}${resource}`
@@ -30,15 +29,8 @@
 
   const okCheck = statusCheck([HTTP_OK])
 
-  const headers = {
-    // 'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
-    'Authorization': API_KEY,
-    'X-Fortnite-API-Version': 'v1.1'
-  }
-
   const paramsWithApiKey = params => {
     const result = new URLSearchParams(params)
-    result.set('api_key', API_KEY)
     for (let key in params) {
       if (params.hasOwnProperty(key)) {
         result.set(key, params[key])
