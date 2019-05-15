@@ -111,7 +111,6 @@
 
   // DAILY SHOP
   const displayShop = () => {
-    console.log("DISPLAY SHOP")
     window.ApiService.searchShop()
       .then(result => displayShopItems(result.items, result.vbucks))
       .catch(() => $('#shop-container').empty().append(
@@ -207,14 +206,14 @@
 
   const filterChallenges = (challenges, currentWeek, star) => {
     const availableChallenges = cleanChallenges(challenges)
-    const cws = currentWeek - 1
+    const cws = "week" + currentWeek
     displayChallengeItems(availableChallenges[cws], star)
   }
 
   const displayChallengeItems = (week, star) => {
     $('#challenge-container').empty().append(
-      week.entries.map(entry => {
-        return challengeElement(entry, star) 
+      Object.entries(week).map(entry => { 
+        return challengeElement(entry[1], star) 
       })
     )
   }
