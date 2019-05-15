@@ -29,6 +29,13 @@
 
   const okCheck = statusCheck([HTTP_OK])
 
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+    'Access-Control-Allow-Headers': 'Authorization',
+    'X-Fortnite-API-Version': 'v1.1'
+  }
+
   const paramsWithApiKey = params => {
     const result = new URLSearchParams(params)
     for (let key in params) {
