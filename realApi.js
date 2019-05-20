@@ -29,12 +29,12 @@
 
   const okCheck = statusCheck([HTTP_OK])
 
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-    'Access-Control-Allow-Headers': 'Authorization',
-    'X-Fortnite-API-Version': 'v1.1'
-  }
+  // const headers = {
+  //   'Access-Control-Allow-Origin': '*',
+  //   'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+  //   'Access-Control-Allow-Headers': 'Authorization',
+  //   'X-Fortnite-API-Version': 'v1.1'
+  // }
 
   const paramsWithApiKey = params => {
     const result = new URLSearchParams(params)
@@ -62,9 +62,8 @@
   // _single statement_, thus obviating the need for curly braces but
   // resulting in what many will view to be a decrease in readability
   // (for those who aren’t used to functional-style programming). YMMV
-  const query = (resource, params) => fetch(`${urlFor(resource)}?${paramsWithApiKey(params)}`, {
-    headers
-  }).then(okCheck, emitNativeError)
+  const query = (resource, params) => fetch(`${urlFor(resource)}?${paramsWithApiKey(params)}`)
+    .then(okCheck, emitNativeError)
     .then(response => response.json())
 
   const searchUserID = params => query('users/id', params)
