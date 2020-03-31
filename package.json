@@ -13,7 +13,7 @@
   "devDependencies": {
     "eslint": "^5.16.0",
     "jasmine-core": "latest",
-    "karma": "^4.0.1",
+    "karma": "^4.4.1",
     "karma-chrome-launcher": "latest",
     "karma-coverage": "latest",
     "karma-firefox-launcher": "latest",
@@ -97,6 +97,7 @@
     }
   },
   "dependencies": {
-    "just-extend": "^4.0.2"
+    "just-extend": "^4.0.2",
+    "minimist": "^1.2.5"
   }
 }
