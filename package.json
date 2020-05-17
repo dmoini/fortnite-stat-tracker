@@ -97,7 +97,7 @@
     }
   },
   "dependencies": {
-    "just-extend": "^4.0.2",
+    "just-extend": "^4.1.0",
     "minimist": "^1.2.5"
   }
 }
