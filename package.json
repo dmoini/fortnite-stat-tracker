@@ -11,7 +11,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^5.16.0",
+    "eslint": "^7.0.0",
     "jasmine-core": "latest",
     "karma": "^4.4.1",
     "karma-chrome-launcher": "latest",
